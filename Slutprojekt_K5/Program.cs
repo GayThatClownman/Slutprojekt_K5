@@ -10,7 +10,8 @@ namespace Slutprojekt_K5
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Testing");
+            Console.ReadLine();
 
 
         }
