@@ -10,10 +10,33 @@ namespace Slutprojekt_K5
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Testing");
+            //Notes: Text-Based Dungeon Äventyr-kinda thing.
+            
+            int hp = 100;
+
+            /*List<string> weaponsList = new List<string>();*/
+
+            string[] weaponsList =
+            {
+                "", "", "", "", "",
+            };
+
+            bool checkGameCompletion = true;
+
+            while (checkGameCompletion == false)
+            {
+
+            }
+
+            if (checkGameCompletion == true)
+            {
+                Console.WriteLine("Wow, you made it. WhateverWhateverWhateverWhatever");
+                
+            }
+
             Console.ReadLine();
 
-
+            
         }
     }
 }
