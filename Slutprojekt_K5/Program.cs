@@ -30,7 +30,7 @@ namespace Slutprojekt_K5
                 if (gameState == "intro")
                 {
                     Intro();
-                    gameState = Intro();
+                    gameState = "test";
                 }
 
                 if (gameState == "test")
