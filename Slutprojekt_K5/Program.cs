@@ -13,33 +13,8 @@ namespace Slutprojekt_K5
             //Notes: Text-Based Dungeon Äventyr-kinda thing.
             
             int hp = 100;
-            string gameState = "";
-
-            /*int stateSwitch = 1;
-
-            switch (stateSwitch)
-            {
-                case 1:
-                    gameState = "Gamer";
-                    break;
-                case 2:
-                    gameState = "Non-Gamer";
-                    break;
-            }
-
-            while (gameState == "Gamer")
-            {
-                Console.WriteLine("Gamer");
-                stateSwitch++;
-                Console.ReadLine();
-            }
-
-            while (gameState == "Non-Gamer")
-            {
-                Console.WriteLine("Non-Gamer");
-                stateSwitch--;
-                Console.ReadLine();
-            }*/
+            string gameState = "intro";
+            int damage = 0;
 
             /*List<string> weaponsList = new List<string>();*/
 
@@ -54,7 +29,16 @@ namespace Slutprojekt_K5
             {
                 if (gameState == "intro")
                 {
+                    Intro();
+                    gameState = Intro();
+                }
 
+                if (gameState == "test")
+                {
+                    //damage = DamageGenerator(125, 200);
+                    //Console.WriteLine(damage);
+
+                    Console.ReadLine();
                 }
             }
 
@@ -68,5 +52,27 @@ namespace Slutprojekt_K5
 
             
         }
+
+        static string Intro()
+        {
+            string state = "test";
+
+            Console.WriteLine("This is an intro screen.");
+            Console.WriteLine("Wow, how EPIC!");
+            Console.WriteLine("Press ENTER to continue.");
+            Console.ReadLine();
+            return state;
+        }
+
+        static int DamageGenerator(int dmg1, int dmg2)
+        {
+            Random dmgGenerator = new Random();
+
+            int damage = dmgGenerator.Next(dmg1, dmg2);
+
+            return damage;
+        }
+
+
     }
 }
