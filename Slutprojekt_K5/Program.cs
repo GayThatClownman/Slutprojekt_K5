@@ -30,15 +30,21 @@ namespace Slutprojekt_K5
                 if (gameState == "intro")
                 {
                     Intro();
-                    gameState = "test";
+                    /*gameState = "test";*/
+                    
                 }
 
                 if (gameState == "test")
                 {
                     //damage = DamageGenerator(125, 200);
                     //Console.WriteLine(damage);
-
+                    Console.WriteLine("OkDog");
                     Console.ReadLine();
+                }
+
+                else
+                {
+                    Console.WriteLine("Banaenae'd");
                 }
             }
 
@@ -53,16 +59,24 @@ namespace Slutprojekt_K5
             
         }
 
-        static string Intro()
+        static void Intro()
         {
-            string state = "test";
-
             Console.WriteLine("This is an intro screen.");
             Console.WriteLine("Wow, how EPIC!");
             Console.WriteLine("Press ENTER to continue.");
-            Console.ReadLine();
-            return state;
+            //Console.ReadLine();
+            /*gameState = Console.ReadLine().ToLower();
+            return gameState;*/
         }
+
+
+
+        /*static string Navigate()
+        {
+            string nav = "";
+            nav = Console.ReadLine().ToLower();
+            return nav;
+        }*/
 
         static int DamageGenerator(int dmg1, int dmg2)
         {
