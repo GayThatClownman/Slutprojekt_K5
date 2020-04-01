@@ -10,42 +10,55 @@ namespace Slutprojekt_K5
     {
         static void Main(string[] args)
         {
-            //Notes: Text-Based Dungeon Äventyr-kinda thing.
+            //Notes: Stage-based Fight Spel med progressive scaling..
             
             int hp = 100;
-            string gameState = "intro";
-            int damage = 0;
+            string gameState = "gameStart";
+            int damage = DamageGenerator(5, 15);
 
-            /*List<string> weaponsList = new List<string>();*/
+            int stage = 1;
 
-            /*string[] weaponsList =
+            int[] enemyHealth =
+            {
+                10, 25, 50, 75, 100, 150,
+            };
+
+            string[] weaponsList =
             {
                 "Wooden Shortsword", "", "", "", "",
-            };*/
+            };
 
             bool checkGameCompletion = false;
 
             while (checkGameCompletion == false)
             {
-                if (gameState == "intro")
+                /*if (gameState == "intro")
                 {
                     Intro();
-                    /*gameState = "test";*/
                     
+                    gameState = "gameStart";                    
+                }*/
+
+                while (gameState == "gameStart")
+                {
+                    if (stage == 1)
+                    {
+                        Console.WriteLine("Okdog");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Bruh tf");
+                    }
                 }
 
-                if (gameState == "test")
+                /*if (gameState == "test")
                 {
                     //damage = DamageGenerator(125, 200);
                     //Console.WriteLine(damage);
                     Console.WriteLine("OkDog");
                     Console.ReadLine();
-                }
-
-                else
-                {
-                    Console.WriteLine("Banaenae'd");
-                }
+                }*/                
             }
 
             if (checkGameCompletion == true)
@@ -59,11 +72,11 @@ namespace Slutprojekt_K5
             
         }
 
-        static void Intro()
+        static void FightPrompt()
         {
-            Console.WriteLine("This is an intro screen.");
-            Console.WriteLine("Wow, how EPIC!");
-            Console.WriteLine("Press ENTER to continue.");
+            Console.WriteLine("What do you want to do?");
+            Console.WriteLine("A: Attack");
+            Console.WriteLine("B: Block");
             //Console.ReadLine();
             /*gameState = Console.ReadLine().ToLower();
             return gameState;*/
@@ -85,6 +98,11 @@ namespace Slutprojekt_K5
             int damage = dmgGenerator.Next(dmg1, dmg2);
 
             return damage;
+        }
+
+        static void AttackPhase(int[] enemyHealth, int stage)
+        {
+
         }
 
 
