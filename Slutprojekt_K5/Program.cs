@@ -14,6 +14,7 @@ namespace Slutprojekt_K5
             
             int hp = 100;
             string gameState = "gameStart";
+            string action = "";
             int damage = DamageGenerator(5, 15);
 
             int stage = 1;
@@ -22,6 +23,8 @@ namespace Slutprojekt_K5
             {
                 10, 25, 50, 75, 100, 150,
             };
+
+            int currentEnemyHealth = 1;
 
             string[] weaponsList =
             {
@@ -41,9 +44,18 @@ namespace Slutprojekt_K5
 
                 while (gameState == "gameStart")
                 {
-                    if (stage == 1)
+                    if (stage == 1 && currentEnemyHealth > 0)
                     {
-                        Console.WriteLine("Okdog");
+                        currentEnemyHealth = enemyHealth[0];
+                        Console.WriteLine(currentEnemyHealth); 
+                        FightPrompt();
+                        action = Console.ReadLine().ToLower();
+
+                        if (action == "a")
+                        {
+
+                            
+                        }
                     }
 
                     else
@@ -77,9 +89,7 @@ namespace Slutprojekt_K5
             Console.WriteLine("What do you want to do?");
             Console.WriteLine("A: Attack");
             Console.WriteLine("B: Block");
-            //Console.ReadLine();
-            /*gameState = Console.ReadLine().ToLower();
-            return gameState;*/
+            
         }
 
 
