@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Slutprojekt_K5
@@ -15,7 +17,8 @@ namespace Slutprojekt_K5
             int hp = 100;
             string gameState = "gameStart";
             string action = "";
-            int damage = DamageGenerator(5, 15);
+            int damage = 0;
+            int enemyDamage = 0;
 
             int stage = 1;
 
@@ -24,12 +27,12 @@ namespace Slutprojekt_K5
                 10, 25, 50, 75, 100, 150,
             };
 
-            int currentEnemyHealth = 1;
-
             string[] weaponsList =
             {
-                "Wooden Shortsword", "", "", "", "",
+                "Wooden Shortsword", "1", "2", "3", "4",
             };
+
+            string currentWeapon = weaponsList[0];
 
             bool checkGameCompletion = false;
 
@@ -41,20 +44,35 @@ namespace Slutprojekt_K5
                     
                     gameState = "gameStart";                    
                 }*/
+                
 
                 while (gameState == "gameStart")
                 {
-                    if (stage == 1 && currentEnemyHealth > 0)
+
+                    if (stage == 1 && enemyHealth[0] > 0)
                     {
-                        currentEnemyHealth = enemyHealth[0];
-                        Console.WriteLine(currentEnemyHealth); 
+                        
+                        Console.WriteLine("Current enemy health: " + enemyHealth[0]);
                         FightPrompt();
+                        //Navigate(action);
                         action = Console.ReadLine().ToLower();
 
                         if (action == "a")
                         {
+                            damage = DamageGenerator(1, 5);
+                            enemyHealth[0] = enemyHealth[0] - damage;
+                            Console.WriteLine("You strike the enemy, dealing " + damage + " damage.");
+                            Thread.Sleep(1500);
+                            enemyDamage = DamageGenerator(4, 8);
+                            hp = hp - enemyDamage;
+                            Console.WriteLine("The enemy strikes you, dealing " + enemyDamage + " damage.");
+                            Thread.Sleep(1500);
 
-                            
+                        }
+
+                        if (action == "c")
+                        {
+                            Environment.Exit(0);
                         }
                     }
 
@@ -86,19 +104,28 @@ namespace Slutprojekt_K5
 
         static void FightPrompt()
         {
+            string[] choices =
+            {
+                "A: Attack",
+                "B: Block",
+                "C: Exit"
+            };
+
+            int nmr = 0;
+
             Console.WriteLine("What do you want to do?");
-            Console.WriteLine("A: Attack");
-            Console.WriteLine("B: Block");
+            while (nmr < choices.Length)
+            {
+                Console.WriteLine(choices[nmr]);
+                nmr++;
+            }
             
         }
 
-
-
-        /*static string Navigate()
+        /*static string Navigate(string action)
         {
-            string nav = "";
-            nav = Console.ReadLine().ToLower();
-            return nav;
+            action = Console.ReadLine().ToLower();
+            return action;
         }*/
 
         static int DamageGenerator(int dmg1, int dmg2)
@@ -110,9 +137,9 @@ namespace Slutprojekt_K5
             return damage;
         }
 
-        static void AttackPhase(int[] enemyHealth, int stage)
+        static void PlayerAttackPhase(int[] enemyHealth, int damage)
         {
-
+            
         }
 
 
